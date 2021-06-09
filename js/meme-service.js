@@ -105,3 +105,7 @@ function deleteLine() {
     gMeme.lines.splice(lineIndx, 1);
     gMeme.selectedLineIndx = 0;
 }
+
+function getGmeme() {
+    return gMeme;
+}

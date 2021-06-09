@@ -88,3 +88,26 @@ function onDeleteTxt() {
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
+
+function moveTxt(ev) {
+    console.log(ev);
+    var imgUrl = getImgUrl();
+    var meme = getGmeme();
+    if (ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        meme.lines[meme.selectedLineIndx].y -= 5;
+        renderCanvas(imgUrl);
+    } else if (ev.key === 'ArrowDown') {
+        ev.preventDefault();
+        meme.lines[meme.selectedLineIndx].y += 5;
+        renderCanvas(imgUrl);
+    } else if (ev.key === 'ArrowRight') {
+        ev.preventDefault();
+        meme.lines[meme.selectedLineIndx].x += 5;
+        renderCanvas(imgUrl);
+    } else if (ev.key === 'ArrowLeft') {
+        ev.preventDefault();
+        meme.lines[meme.selectedLineIndx].x -= 5;
+        renderCanvas(imgUrl);
+    }
+}
