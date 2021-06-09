@@ -13,7 +13,7 @@ function renderGalery() {
     var imges = getImges();
     var id = 0;
     var strHTMLs = imges.map(function(img) {
-        return `<img id="${id + 1}" src="${img.url}" alt="img + ${id++}">`
+        return `<img id="${id + 1}" class="galery-img" src="${img.url}" alt="img + ${id++}">`
     })
     document.querySelector('.imges-container').innerHTML = strHTMLs.join('')
 }
