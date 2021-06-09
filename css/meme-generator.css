@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+.img-canvas {
+    border: 1px solid black;
+}
+
+.imges-container {
+    display: grid;
+    border: 1px solid black;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/meme-generator.css">
+    <title>Meme-Generator</title>
+</head>
+
+<body onload="init()">
+    <header class="main-header">
+        <nav class="header-nav">
+            <button>Gallery</button>
+        </nav>
+    </header>
+    <div class="galery-container" onclick="onClickImg(event)">
+        <div class="imges-container">
+
+        </div>
+    </div>
+
+
+    <div class="meme-editor-container">
+        <div class="canvas-container">
+
+        </div>
+        <div class="meme-design-container">
+            <input type="text" name="txt-on-meme" placeholder="write some txt">
+            <button class="addTxt-btn" onclick="onAddTxt()">+</button>
+            <button class="txt-increase-btn" onclick="onResizeTxt(this.value)" value="increase">A+</button>
+            <button class="txt-decrease-btn" onclick="onResizeTxt(this.value)" value="decrease">A-</button>
+            <button class="switch-txt-line-btn" onclick="onSwitchTxtLine()">⬆⬇</button>
+        </div>
+    </div>
+
+    <script src="./js/storage-service.js"></script>
+    <script src="./js/meme-service.js"></script>
+    <script src="./js/meme-controller.js"></script>
+</body>
+
+</html>
