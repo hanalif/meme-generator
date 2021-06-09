@@ -33,11 +33,11 @@ function firstUpdatOfeGmeme(imgId) {
 }
 
 function updateGmemeTxtSize(txtResizeAction) {
-    var currTextSize = gMeme.lines[0].size;
+    var currTextSize = gMeme.lines[gMeme.selectedLineIndx].size;
     if (txtResizeAction === 'increase') {
-        gMeme.lines[0].size = currTextSize + 1;
+        gMeme.lines[gMeme.selectedLineIndx].size = currTextSize + 1;
     } else {
-        gMeme.lines[0].size = currTextSize - 1;
+        gMeme.lines[gMeme.selectedLineIndx].size = currTextSize - 1;
     }
 
 }
@@ -70,15 +70,22 @@ function getTxtOfSelectedLine() {
 }
 
 
-function addTxt(txt) {
-    var line = createNewLine(txt);
+function addTxt(txt, canvasHeight) {
+    var line = createNewLine(txt, canvasHeight);
     gMeme.lines.push(line);
     gMeme.selectedLineIndx = gMeme.lines.length - 1;
-    // comment
 }
 
-function createNewLine(txt) {
-    let y = 50 + gMeme.lines.length * 70;
+function createNewLine(txt, canvasHeight) {
+    let y;
+    if (gMeme.lines.length === 0) {
+        y = 80;
+    } else if (gMeme.lines.length === 1) {
+        y = canvasHeight - 40;
+    } else {
+        y = canvasHeight / 2;
+    }
+
     return {
         txt: txt,
         size: 50,
@@ -87,4 +94,8 @@ function createNewLine(txt) {
         x: 225,
         y: y,
     }
+}
+
+function updateSelectedLineIndx() {
+    gMeme.selectedLineIndx = (gMeme.selectedLineIndx + 1) % gMeme.lines.length;
 }
