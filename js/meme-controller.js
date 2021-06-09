@@ -82,3 +82,9 @@ function onSwitchTxtLine() {
     renderCanvas(imgUrl);
 
 }
+
+function onDeleteTxt() {
+    deleteLine()
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
+}

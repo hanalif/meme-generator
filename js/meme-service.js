@@ -35,9 +35,9 @@ function firstUpdatOfeGmeme(imgId) {
 function updateGmemeTxtSize(txtResizeAction) {
     var currTextSize = gMeme.lines[gMeme.selectedLineIndx].size;
     if (txtResizeAction === 'increase') {
-        gMeme.lines[gMeme.selectedLineIndx].size = currTextSize + 1;
+        gMeme.lines[gMeme.selectedLineIndx].size = currTextSize + 10;
     } else {
-        gMeme.lines[gMeme.selectedLineIndx].size = currTextSize - 1;
+        gMeme.lines[gMeme.selectedLineIndx].size = currTextSize - 10;
     }
 
 }
@@ -98,4 +98,10 @@ function createNewLine(txt, canvasHeight) {
 
 function updateSelectedLineIndx() {
     gMeme.selectedLineIndx = (gMeme.selectedLineIndx + 1) % gMeme.lines.length;
+}
+
+function deleteLine() {
+    var lineIndx = gMeme.selectedLineIndx;
+    gMeme.lines.splice(lineIndx, 1);
+    gMeme.selectedLineIndx = 0;
 }
