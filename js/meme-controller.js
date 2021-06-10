@@ -10,6 +10,26 @@ const CANVAS_WIDTH = 450;
 
 function init() {
     renderGalery();
+    renderFontsList();
+}
+
+function renderFontsList() {
+    const fontInputEl = getFontsInputEl();
+    const fonts = getAvailableFonts();
+    let optionsStr = '';
+    for (const font of fonts) {
+        optionsStr += `<option value="${font}">${font}</option>`;
+    }
+    fontInputEl.innerHTML = optionsStr;
+}
+
+function onFontChange(font) {
+    const line = getSelectedLine();
+    const fonts = getAvailableFonts();
+    const fontIndex = fonts.indexOf(font);
+    line.selectedFontIndex = fontIndex;
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
 }
 
 function renderGalery() {
@@ -51,12 +71,13 @@ function renderCanvas(imgUrl) {
             }
             let line = gMeme.lines[i];
             let txtSize = line.size;
-            gCtx.font = `${txtSize}px impact`;
+            var selectedFont = getFontByIndex(line.selectedFontIndex);
+            gCtx.font = `${txtSize}px ${selectedFont}`;
             let txt = line.txt;
-            gCtx.textAlign = `${line.align}`
-            gCtx.fillStyle = `${line.color}`
-            gCtx.fillText(txt, line.x, line.y)
-            gCtx.strokeText(txt, line.x, line.y)
+            gCtx.textAlign = `${line.align}`;
+            gCtx.fillStyle = `${line.color}`;
+            gCtx.fillText(txt, line.x, line.y);
+            gCtx.strokeText(txt, line.x, line.y);
         }
     }
 }
@@ -166,8 +187,13 @@ function onWritingTxt(chars) {
 }
 
 function onDownloadCanvas(elDownloadBtn) {
+    gMeme.selectedLineIndx = null;
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
     console.log(elDownloadBtn);
-    downloadCanvas(elDownloadBtn, gElCanvas);
+    setTimeout(() => {
+        downloadCanvas(elDownloadBtn, gElCanvas);
+    }, 100);
 }
 
 

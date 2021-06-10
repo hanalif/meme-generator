@@ -157,6 +157,7 @@ button {
     width: 2.93rem;
     font-size: 1.25rem;
     margin: 0.2em;
+    position: relative;
 }
 
 .download-btn {
@@ -179,6 +180,18 @@ button {
     display: flex;
     justify-content: center;
     margin-bottom: 0.625rem;
+}
+
+.color-input {
+    opacity: 0;
+    width: 1px;
+    position: absolute;
+}
+
+.fonts-input {
+    padding: 0.625rem;
+    border-radius: 0.5625rem;
+    border: none;
 }
 
 .txt-input {

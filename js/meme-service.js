@@ -21,8 +21,16 @@ var gImges = [
     { id: 16, url: './meme-imgs (square)/16.jpg', Keywords: [''] },
     { id: 17, url: './meme-imgs (square)/17.jpg', Keywords: [''] },
     { id: 18, url: './meme-imgs (square)/18.jpg', Keywords: [''] },
+];
 
-
+gMemeFonts = [
+    'impact',
+    'Arial',
+    'Verdana',
+    'Helvetica',
+    'Georgia',
+    'Courier New',
+    'Brush Script MT'
 ];
 
 
@@ -89,6 +97,10 @@ function addTxt(txt, canvasHeight) {
     gMeme.selectedLineIndx = gMeme.lines.length - 1;
 }
 
+function getAvailableFonts() {
+    return gMemeFonts;
+}
+
 function createNewLine(txt, canvasHeight) {
     let y;
     if (gMeme.lines.length === 0) {
@@ -102,11 +114,27 @@ function createNewLine(txt, canvasHeight) {
     return {
         txt: txt,
         size: 50,
+        selectedFontIndex: null,
         align: 'center',
         color: 'white',
         x: 225,
         y: y,
     }
+}
+
+function getFontByIndex(indx) {
+    if (indx == null) {
+        return gMemeFonts[0];
+    }
+    return gMemeFonts[indx];
+}
+
+function getFontsInputEl() {
+    return document.querySelector('.fonts-input');
+}
+
+function getSelectedLine() {
+    return gMeme.selectedLineIndx != null ? gMeme.lines[gMeme.selectedLineIndx] : null;
 }
 
 function updateSelectedLineIndx() {
