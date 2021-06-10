@@ -3,22 +3,122 @@
     src: url(/fonts/impact/impact.ttf);
 }
 
-* {
-    box-sizing: border-box;
+
+/* BASE */
+
+html {
+    font-family: playfair, serif;
+    color: #626262;
+    line-height: 1.5;
 }
 
-h5 {
+body {
     margin: 0;
+    font-size: .875rem;
 }
 
-.img-canvas {
-    border: 1px solid black;
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 .866em;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2.142em;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+a {
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* Components */
+
+
+/* header */
+
+.main-header {
+    background-color: #ff7f00;
+}
+
+.header-nav {
+    height: 4.125rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
+
+.side-nav {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header-nav-btn {
+    border: none;
+    background-color: inherit;
+    font-size: inherit;
+    color: white;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+}
+
+.header-nav-btn:hover {
+    color: black;
+}
+
+.search-container {
+    display: flex;
+    height: 6.25rem;
+    align-items: center;
+}
+
+.search-input {
+    display: inline;
+    align-items: center;
+    height: 1.31rem;
+    border-bottom: 1px solid black;
+}
+
+.curr-page {
+    border-bottom: 4px solid black;
+    color: black;
+}
+
+.galery-container {
+    display: block;
+    background-color: #e3e3e3;
+    padding: 0.93rem;
 }
 
 .imges-container {
     display: grid;
-    border: 1px solid black;
-    gap: 15px;
+    gap: 0.93rem;
     grid-template-columns: repeat(3, 1fr);
 }
 
@@ -27,8 +127,86 @@ h5 {
     height: 100%;
 }
 
+
+/* editor */
+
+.main-meme-editor-container {
+    display: none;
+    background-color: #e3e3e3;
+}
+
+.meme-editor-container {
+    display: flex;
+    gap: 0.625rem;
+    justify-content: center;
+    align-items: center;
+    height: 28.125rem;
+}
+
 .canvas-container {
-    border: 1px solid black;
-    width: 450px;
-    height: 450px;
+    width: 28.125rem;
+    height: inherit;
+}
+
+.action-btn {
+    background-color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.625rem;
+    height: 2.93rem;
+    width: 2.93rem;
+    font-size: 1.25rem;
+    margin: 0.2em;
+}
+
+.download-btn {
+    background-color: #ff7f00;
+    height: 3.625rem;
+    color: white;
+    padding: 0.25em;
+    border: none;
+    border-radius: 0.9em;
+    font-size: 1.25rem;
+    width: 7.4em;
+}
+
+.btns-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.625rem;
+}
+
+.txt-input {
+    border: none;
+    height: 1.75rem;
+    border-radius: 0.312rem;
+    padding: 1rem;
+}
+
+
+/* footer */
+
+.footer {
+    background-color: #ff7f00;
+    height: 4.125rem;
+}
+
+
+/* Layout */
+
+.main-layout {
+    max-width: 1108px;
+    margin: 0 auto;
+    padding-right: 1.4rem;
+    padding-left: 1.4rem;
+}
+
+@media (max-width: 722px) {
+    .meme-editor-container {
+        flex-direction: column;
+        height: 52.125rem;
+    }
+    .imges-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
