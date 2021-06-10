@@ -9,7 +9,7 @@ const CANVAS_WIDTH = 450;
 
 
 function init() {
-    renderGalery()
+    renderGalery();
 }
 
 function renderGalery() {
@@ -26,22 +26,22 @@ function onClickImg(ev) {
     var imgId = +ev.toElement.id;
     firstUpdatOfeGmeme(imgId);
     var imgUrl = getImgUrl();
+    var strHTML = `<canvas width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" onclick="draw(event)" class="img-canvas"></canvas>`
+    document.querySelector('.canvas-container').innerHTML = strHTML;
     renderCanvas(imgUrl);
 };
 
+
 function renderCanvas(imgUrl) {
-    var strHTML = `<canvas width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" onclick="draw(event)" class="img-canvas"></canvas>`
-    document.querySelector('.canvas-container').innerHTML = strHTML;
-    gElCanvas = document.querySelector('.img-canvas');
-    gCtx = gElCanvas.getContext('2d');
+    if (!gElCanvas) {
+        gElCanvas = document.querySelector('.img-canvas');
+        gCtx = gElCanvas.getContext('2d');
+    }
     var imgObj = new Image();
     imgObj.src = imgUrl;
-    imgObj.onload = (imgId) => {
-        gCtx.drawImage(imgObj, 0, 0);
+    imgObj.onload = () => {
+        gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         gCtx.lineWidth = 1
-        gCtx.fillStyle = `blue`
-
-
         for (let i = 0; i < gMeme.lines.length; i++) {
             if (gMeme.selectedLineIndx === i) {
                 gCtx.strokeStyle = `yellow`
@@ -51,6 +51,7 @@ function renderCanvas(imgUrl) {
             let line = gMeme.lines[i];
             let txt = line.txt;
             gCtx.textAlign = `${line.align}`
+            gCtx.fillStyle = `${line.color}`
             gCtx.font = `${line.size}px Arial`
             gCtx.fillText(txt, line.x, line.y)
             gCtx.strokeText(txt, line.x, line.y)
@@ -69,6 +70,7 @@ function onAddTxt() {
     elTxt.value = '';
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
+
 }
 
 function onResizeTxt(txtResizeAction) {
@@ -85,7 +87,7 @@ function onSwitchTxtLine() {
 }
 
 function onDeleteTxt() {
-    deleteLine()
+    deleteLine(CANVAS_HEIGHT);
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
@@ -143,4 +145,16 @@ function onAlignTxt(txtAlignAction) {
         meme.lines[meme.selectedLineIndx].align = txtAlignAction;
         renderCanvas(imgUrl);
     }
+}
+
+function onPickTxtColor(color) {
+    console.log(color);
+    updateGmemeTxtColor(color);
+    renderCanvas();
+}
+
+
+function onWritingTxt(chars) {
+    updateGmemeTxtWhileWriting(chars, CANVAS_HEIGHT);
+    renderCanvas();
 }

@@ -13,10 +13,10 @@ var gImges = [
 ];
 
 
-function creategMeme(imgId, indx = null, txt = '') {
+function creategMeme(imgId) {
     gMeme = {
         selectedImgId: imgId,
-        selectedLineIndx: indx,
+        selectedLineIndx: null,
         lines: []
     }
 
@@ -100,12 +100,31 @@ function updateSelectedLineIndx() {
     gMeme.selectedLineIndx = (gMeme.selectedLineIndx + 1) % gMeme.lines.length;
 }
 
-function deleteLine() {
+function deleteLine(canvasHeight) {
     var lineIndx = gMeme.selectedLineIndx;
     gMeme.lines.splice(lineIndx, 1);
     gMeme.selectedLineIndx = 0;
+    for (let i = 0; i < gMeme.lines.length; i++) {
+        const curLine = gMeme.lines[i];
+        if (i === 0) {
+            curLine.y = 80;
+        } else if (i === 1) {
+            curLine.y = canvasHeight - 40;
+        } else {
+            curLine.y = canvasHeight / 2;
+        }
+    }
 }
 
 function getGmeme() {
     return gMeme;
+}
+
+function updateGmemeTxtColor(color) {
+    if (gMeme.selectedLineIndx === null) return;
+    gMeme.lines[gMeme.selectedLineIndx].color = color;
+}
+
+function updateGmemeTxtWhileWriting(chars) {
+    gMeme.lines[gMeme.selectedLineIndx].txt = chars;
 }
