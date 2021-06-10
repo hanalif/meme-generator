@@ -43,15 +43,15 @@ function renderCanvas(imgUrl) {
     imgObj.onload = () => {
         gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         gCtx.lineWidth = 1
-        for (let i = 0; i <= gMeme.lines.length; i++) {
+        for (let i = 0; i < gMeme.lines.length; i++) {
             if (gMeme.selectedLineIndx === i) {
-                gCtx.strokeStyle = `black`
+                gCtx.strokeStyle = `yellow`;
             } else {
-                gCtx.strokeStyle = `grey`
+                gCtx.strokeStyle = `grey`;
             }
             let line = gMeme.lines[i];
             let txtSize = line.size;
-            gCtx.font = `${txtSize}px impact`
+            gCtx.font = `${txtSize}px impact`;
             let txt = line.txt;
             gCtx.textAlign = `${line.align}`
             gCtx.fillStyle = `${line.color}`
@@ -63,13 +63,9 @@ function renderCanvas(imgUrl) {
 
 
 function onAddTxt() {
-    var elTxt = document.querySelector('input[name=txt-on-meme]');
-    if (elTxt.value === "") return;
-    addTxt(elTxt.value, CANVAS_HEIGHT);
-    elTxt.value = '';
+    addTxt('<Enter Your Text>', CANVAS_HEIGHT);
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
-
 }
 
 function onResizeTxt(txtResizeAction) {
@@ -80,6 +76,8 @@ function onResizeTxt(txtResizeAction) {
 
 function onSwitchTxtLine() {
     updateSelectedLineIndx();
+    var elTxt = document.querySelector('input[name=txt-on-meme]');
+    elTxt.value = getTxtOfSelectedLine();
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 
@@ -149,13 +147,22 @@ function onAlignTxt(txtAlignAction) {
 function onPickTxtColor(color) {
     console.log(color);
     updateGmemeTxtColor(color);
-    renderCanvas();
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
 }
 
+function onClickTxtColorButton() {
+    var colorInputEl = document.querySelector(".color-input");
+    colorInputEl.focus();
+    colorInputEl.click();
+}
 
 function onWritingTxt(chars) {
-    updateGmemeTxtWhileWriting(chars, CANVAS_HEIGHT);
-    renderCanvas();
+    if (gMeme.selectedLineIndx != null) {
+        updateGmemeTxtWhileWriting(chars, CANVAS_HEIGHT);
+        var imgUrl = getImgUrl();
+        renderCanvas(imgUrl);
+    }
 }
 
 function onDownloadCanvas(elDownloadBtn) {
@@ -188,8 +195,4 @@ function galeryToDisplayBlock() {
 function memeEditorToDisplayNone() {
     var elMemeEditor = document.querySelector('.main-meme-editor-container');
     elMemeEditor.style.display = 'none';
-}
-
-function onWritingTxt(chars) {
-    console.log(chars);
 }
