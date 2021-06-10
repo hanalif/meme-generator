@@ -44,15 +44,16 @@ function renderCanvas(imgUrl) {
         gCtx.lineWidth = 1
         for (let i = 0; i < gMeme.lines.length; i++) {
             if (gMeme.selectedLineIndx === i) {
-                gCtx.strokeStyle = `yellow`
+                gCtx.strokeStyle = `black`
             } else {
-                gCtx.strokeStyle = `red`
+                gCtx.strokeStyle = `grey`
             }
+
             let line = gMeme.lines[i];
             let txt = line.txt;
             gCtx.textAlign = `${line.align}`
             gCtx.fillStyle = `${line.color}`
-            gCtx.font = `${line.size}px Arial`
+            gCtx.font = `${line.size}px impact`
             gCtx.fillText(txt, line.x, line.y)
             gCtx.strokeText(txt, line.x, line.y)
         }
@@ -157,4 +158,8 @@ function onPickTxtColor(color) {
 function onWritingTxt(chars) {
     updateGmemeTxtWhileWriting(chars, CANVAS_HEIGHT);
     renderCanvas();
+}
+
+function onDownload(elDownloadBtn) {
+    downloadCanvas(elDownloadBtn, gElCanvas);
 }

@@ -90,7 +90,7 @@ function createNewLine(txt, canvasHeight) {
         txt: txt,
         size: 50,
         align: 'center',
-        color: 'red',
+        color: 'white',
         x: 225,
         y: y,
     }
@@ -127,4 +127,10 @@ function updateGmemeTxtColor(color) {
 
 function updateGmemeTxtWhileWriting(chars) {
     gMeme.lines[gMeme.selectedLineIndx].txt = chars;
+}
+
+function downloadCanvas(elDownloadBtn, gElCanvas) {
+    const data = gElCanvas.toDataURL()
+    elDownloadBtn.href = data
+    elDownloadBtn.download = 'puki'
 }
