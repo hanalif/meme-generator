@@ -29,8 +29,6 @@ function onClickImg(ev) {
     var imgUrl = getImgUrl();
     galeryToDisplayNone();
     memeEditorToDisplayBlock();
-    // var strHTML = `<canvas width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" onclick="draw(event)" class="img-canvas"></canvas>`
-    // document.querySelector('.canvas-container').innerHTML = strHTML;
     renderCanvas(imgUrl);
 };
 
@@ -45,26 +43,24 @@ function renderCanvas(imgUrl) {
     imgObj.onload = () => {
         gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
         gCtx.lineWidth = 1
-        for (let i = 0; i < gMeme.lines.length; i++) {
+        for (let i = 0; i <= gMeme.lines.length; i++) {
             if (gMeme.selectedLineIndx === i) {
                 gCtx.strokeStyle = `black`
             } else {
                 gCtx.strokeStyle = `grey`
             }
             let line = gMeme.lines[i];
+            let txtSize = line.size;
+            gCtx.font = `${txtSize}px impact`
             let txt = line.txt;
             gCtx.textAlign = `${line.align}`
             gCtx.fillStyle = `${line.color}`
-            gCtx.font = `${line.size}px impact`
             gCtx.fillText(txt, line.x, line.y)
             gCtx.strokeText(txt, line.x, line.y)
         }
     }
 }
 
-function draw(ev) {
-    console.log(ev);
-}
 
 function onAddTxt() {
     var elTxt = document.querySelector('input[name=txt-on-meme]');
@@ -162,7 +158,8 @@ function onWritingTxt(chars) {
     renderCanvas();
 }
 
-function onDownload(elDownloadBtn) {
+function onDownloadCanvas(elDownloadBtn) {
+    console.log(elDownloadBtn);
     downloadCanvas(elDownloadBtn, gElCanvas);
 }
 
@@ -191,4 +188,8 @@ function galeryToDisplayBlock() {
 function memeEditorToDisplayNone() {
     var elMemeEditor = document.querySelector('.main-meme-editor-container');
     elMemeEditor.style.display = 'none';
+}
+
+function onWritingTxt(chars) {
+    console.log(chars);
 }

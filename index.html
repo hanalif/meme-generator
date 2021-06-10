@@ -36,11 +36,11 @@
     <div class="main-meme-editor-container">
         <div class="meme-editor-container main-layout">
             <div class="canvas-container">
-                <canvas width="450" height="450" onclick="draw(event)" class="img-canvas"></canvas>
+                <canvas width="450" height="450" class="img-canvas"></canvas>
             </div>
             <div class="meme-design-container">
                 <div class="btns-container">
-                    <input class="txt-input" type="text" name="txt-on-meme" placeholder="write some txt">
+                    <input oninput="onWritingTxt(this.value)" class="txt-input" type="text" name="txt-on-meme" placeholder="write some txt">
                 </div>
                 <div class="btns-container">
                     <button class="action-btn" onclick="onSwitchTxtLine()">⬆⬇</button>
@@ -64,9 +64,8 @@
                     <button class="action-btn" onclick="onResizeTxt(this.value)" value="decrease">A-</button>
                 </div>
                 <div class="btns-container">
-                    <button class="download-btn" onclick="onDownload(this)">download</button>
+                    <a href="#" class="download-btn" onclick="onDownloadCanvas(this)" download="file-name">download</a>
                 </div>
-
             </div>
         </div>
     </div>

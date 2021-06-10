@@ -163,6 +163,11 @@ button {
     background-color: #ff7f00;
     height: 3.625rem;
     color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
     padding: 0.25em;
     border: none;
     border-radius: 0.9em;
