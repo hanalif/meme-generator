@@ -62,12 +62,14 @@ function renderCanvas(imgUrl) {
     imgObj.src = imgUrl;
     imgObj.onload = () => {
         gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-        gCtx.lineWidth = 1
+
         for (let i = 0; i < gMeme.lines.length; i++) {
             if (gMeme.selectedLineIndx === i) {
-                gCtx.strokeStyle = `yellow`;
-            } else {
+                gCtx.lineWidth = 1
                 gCtx.strokeStyle = `grey`;
+            } else {
+                gCtx.lineWidth = 3
+                gCtx.strokeStyle = `black`;
             }
             let line = gMeme.lines[i];
             let txtSize = line.size;
