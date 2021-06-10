@@ -89,7 +89,7 @@ function createNewLine(txt, canvasHeight) {
     return {
         txt: txt,
         size: 50,
-        align: 'left',
+        align: 'center',
         color: 'red',
         x: 225,
         y: y,

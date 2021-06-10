@@ -40,7 +40,7 @@ function renderCanvas(imgUrl) {
         gCtx.drawImage(imgObj, 0, 0);
         gCtx.lineWidth = 1
         gCtx.fillStyle = `blue`
-        gCtx.textAlign = `center`
+
 
         for (let i = 0; i < gMeme.lines.length; i++) {
             if (gMeme.selectedLineIndx === i) {
@@ -50,6 +50,7 @@ function renderCanvas(imgUrl) {
             }
             let line = gMeme.lines[i];
             let txt = line.txt;
+            gCtx.textAlign = `${line.align}`
             gCtx.font = `${line.size}px Arial`
             gCtx.fillText(txt, line.x, line.y)
             gCtx.strokeText(txt, line.x, line.y)
@@ -90,7 +91,6 @@ function onDeleteTxt() {
 }
 
 function moveTxt(ev) {
-    console.log(ev);
     var imgUrl = getImgUrl();
     var meme = getGmeme();
     if (ev.key === 'ArrowUp') {
@@ -108,6 +108,39 @@ function moveTxt(ev) {
     } else if (ev.key === 'ArrowLeft') {
         ev.preventDefault();
         meme.lines[meme.selectedLineIndx].x -= 5;
+        renderCanvas(imgUrl);
+    }
+}
+
+function onMoveTxt(txtMoveAction) {
+    var imgUrl = getImgUrl();
+    var meme = getGmeme();
+    if (txtMoveAction === 'up') {
+        meme.lines[meme.selectedLineIndx].y -= 5;
+        renderCanvas(imgUrl);
+    } else if (txtMoveAction === 'down') {
+        meme.lines[meme.selectedLineIndx].y += 5;
+        renderCanvas(imgUrl);
+    } else if (txtMoveAction === 'right') {
+        meme.lines[meme.selectedLineIndx].x += 5;
+        renderCanvas(imgUrl);
+    } else if (txtMoveAction === 'left') {
+        meme.lines[meme.selectedLineIndx].x -= 5;
+        renderCanvas(imgUrl);
+    }
+}
+
+function onAlignTxt(txtAlignAction) {
+    var imgUrl = getImgUrl();
+    var meme = getGmeme();
+    if (txtAlignAction === 'center') {
+        meme.lines[meme.selectedLineIndx].align = txtAlignAction;
+        renderCanvas(imgUrl);
+    } else if (txtAlignAction === 'right') {
+        meme.lines[meme.selectedLineIndx].align = txtAlignAction;
+        renderCanvas(imgUrl);
+    } else if (txtAlignAction === 'left') {
+        meme.lines[meme.selectedLineIndx].align = txtAlignAction;
         renderCanvas(imgUrl);
     }
 }
