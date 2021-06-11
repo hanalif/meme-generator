@@ -55,14 +55,18 @@
                     <button class="action-btn" onclick="onAlignTxt(this.value)" value="right"><img src="./ICONS/align-to-right.png" alt=""></i></button>
                     <button class="action-btn" onclick="onAlignTxt(this.value)" value="center"><img src="./ICONS/center-text-alignment.png" alt=""></button>
                     <button class="action-btn" onclick="onAlignTxt(this.value)" value="left"><img src="./ICONS/align-to-left.png" alt="" srcset=""></i></button>
-                    <button class="action-btn" onclick="onClickTxtColorButton()" value="left">
+                    <button class="action-btn" onclick="onClickTxtColorButton()">
                         <img src="./ICONS/paint-board-and-brush.png" alt="paintboard" srcset="">
-                        <input type="color" class="color-input" onclick="onPickTxtColor(this.value)">
+                        <input type="color" class="color-input" onclick="onClickColorInput(event)" onchange="onPickTxtColor(this.value)">
                     </button>
                 </div>
                 <div class="btns-container">
                     <button class="action-btn" onclick="onResizeTxt(this.value)" value="increase"><img src="./ICONS/increase font - icon.png" alt="" srcset=""></button>
                     <button class="action-btn" onclick="onResizeTxt(this.value)" value="decrease"><img src="./ICONS/decrease font - icon.png" alt="" srcset=""></button>
+                    <button class="action-btn" onclick="onClickStrokeColor()" value="decrease">
+                        <img src="./ICONS/text stroke.png" alt="" srcset="">
+                        <input type="color" class="stroke-color-input" onclick="onClickColorInput(event)" onchange="onPickStrokeColor(this.value)">
+                    </button>
                 </div>
                 <div class="btns-container">
                     <select onchange="onFontChange(this.value)" class="fonts-input">

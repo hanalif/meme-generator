@@ -188,6 +188,12 @@ button {
     position: absolute;
 }
 
+.stroke-color-input {
+    opacity: 0;
+    width: 1px;
+    position: absolute;
+}
+
 .fonts-input {
     padding: 0.625rem;
     border-radius: 0.5625rem;

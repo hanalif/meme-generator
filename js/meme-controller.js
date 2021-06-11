@@ -65,14 +65,14 @@ function renderCanvas(imgUrl) {
         gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
         for (let i = 0; i < gMeme.lines.length; i++) {
+            let line = gMeme.lines[i];
             if (gMeme.selectedLineIndx === i) {
-                gCtx.lineWidth = 1
-                gCtx.strokeStyle = `grey`;
+                gCtx.lineWidth = 2
+                gCtx.strokeStyle = `yellow`;
             } else {
                 gCtx.lineWidth = 2
-                gCtx.strokeStyle = `black`;
+                gCtx.strokeStyle = `${line.strokeColor}`;
             }
-            let line = gMeme.lines[i];
             let txtSize = line.size;
             var selectedFont = getFontByIndex(line.selectedFontIndex);
             gCtx.font = `${txtSize}px ${selectedFont}`;
@@ -169,15 +169,28 @@ function onAlignTxt(txtAlignAction) {
 }
 
 function onPickTxtColor(color) {
-    console.log(color);
     updateGmemeTxtColor(color);
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
 
-function onClickTxtColorButton() {
+function onClickStrokeColor() {
+    var colorInputEl = document.querySelector(".stroke-color-input");
+    colorInputEl.click();
+}
+
+function onPickStrokeColor(color) {
+    updateGmemeStrokeColor(color);
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
+}
+
+function onClickColorInput(ev) {
+    ev.stopPropagation();
+}
+
+function onClickTxtColorButton(ev) {
     var colorInputEl = document.querySelector(".color-input");
-    colorInputEl.focus();
     colorInputEl.click();
 }
 

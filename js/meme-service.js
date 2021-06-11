@@ -117,6 +117,7 @@ function createNewLine(txt, canvasHeight) {
         selectedFontIndex: null,
         align: 'center',
         color: 'white',
+        strokeColor: 'black',
         x: 225,
         y: y,
     }
@@ -165,6 +166,12 @@ function updateGmemeTxtColor(color) {
     if (gMeme.selectedLineIndx === null) return;
     gMeme.lines[gMeme.selectedLineIndx].color = color;
 }
+
+function updateGmemeStrokeColor(color) {
+    if (gMeme.selectedLineIndx === null) return;
+    gMeme.lines[gMeme.selectedLineIndx].strokeColor = color;
+};
+
 
 function updateGmemeTxtWhileWriting(chars) {
     gMeme.lines[gMeme.selectedLineIndx].txt = chars;
