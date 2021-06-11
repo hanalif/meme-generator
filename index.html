@@ -57,7 +57,7 @@
                     <button class="action-btn" onclick="onAlignTxt(this.value)" value="left"><img src="./ICONS/align-to-left.png" alt="" srcset=""></i></button>
                     <button class="action-btn" onclick="onClickTxtColorButton()">
                         <img src="./ICONS/paint-board-and-brush.png" alt="paintboard" srcset="">
-                        <input type="color" class="color-input" onclick="onClickColorInput(event)" onchange="onPickTxtColor(this.value)">
+                        <input type="color" class="color-input" onclick="onClickColorInput(event)" oninput="onPickTxtColor(this.value)">
                     </button>
                 </div>
                 <div class="btns-container">
@@ -65,7 +65,7 @@
                     <button class="action-btn" onclick="onResizeTxt(this.value)" value="decrease"><img src="./ICONS/decrease font - icon.png" alt="" srcset=""></button>
                     <button class="action-btn" onclick="onClickStrokeColor()" value="decrease">
                         <img src="./ICONS/text stroke.png" alt="" srcset="">
-                        <input type="color" class="stroke-color-input" onclick="onClickColorInput(event)" onchange="onPickStrokeColor(this.value)">
+                        <input type="color" class="stroke-color-input" onclick="onClickColorInput(event)" oninput="onPickStrokeColor(this.value)">
                     </button>
                 </div>
                 <div class="btns-container">
