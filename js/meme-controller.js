@@ -69,7 +69,7 @@ function renderCanvas(imgUrl) {
                 gCtx.lineWidth = 1
                 gCtx.strokeStyle = `grey`;
             } else {
-                gCtx.lineWidth = 3
+                gCtx.lineWidth = 2
                 gCtx.strokeStyle = `black`;
             }
             let line = gMeme.lines[i];
