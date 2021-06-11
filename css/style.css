@@ -230,6 +230,7 @@ button {
         flex-direction: column;
         height: 52.125rem;
         height: 100%;
+        overflow: hidden;
     }
     .imges-container {
         grid-template-columns: repeat(2, 1fr);

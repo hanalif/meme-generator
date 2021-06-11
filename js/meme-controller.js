@@ -61,33 +61,32 @@ function renderCanvas(imgUrl) {
     }
     var imgObj = new Image();
     imgObj.src = imgUrl;
-    imgObj.onload = () => {
-        gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-        for (let i = 0; i < gMeme.lines.length; i++) {
-            let line = gMeme.lines[i];
-            if (gMeme.selectedLineIndx === i) {
-                gCtx.lineWidth = 2
-                gCtx.strokeStyle = `yellow`;
-            } else {
-                gCtx.lineWidth = 2
-                gCtx.strokeStyle = `${line.strokeColor}`;
-            }
-            let txtSize = line.size;
-            var selectedFont = getFontByIndex(line.selectedFontIndex);
-            gCtx.font = `${txtSize}px ${selectedFont}`;
-            let txt = line.txt;
-            gCtx.textAlign = `${line.align}`;
-            gCtx.fillStyle = `${line.color}`;
-            gCtx.fillText(txt, line.x, line.y);
-            gCtx.strokeText(txt, line.x, line.y);
+    gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    for (let i = 0; i < gMeme.lines.length; i++) {
+        let line = gMeme.lines[i];
+        if (gMeme.selectedLineIndx === i) {
+            gCtx.lineWidth = 2
+            gCtx.strokeStyle = `yellow`;
+        } else {
+            gCtx.lineWidth = 2
+            gCtx.strokeStyle = `${line.strokeColor}`;
         }
+        let txtSize = line.size;
+        var selectedFont = getFontByIndex(line.selectedFontIndex);
+        gCtx.font = `${txtSize}px ${selectedFont}`;
+        let txt = line.txt;
+        gCtx.textAlign = `${line.align}`;
+        gCtx.fillStyle = `${line.color}`;
+        gCtx.fillText(txt, line.x, line.y);
+        gCtx.strokeText(txt, line.x, line.y);
     }
 }
 
 
 function onAddTxt() {
     addTxt('<Enter Your Text>', CANVAS_HEIGHT);
+    updateInputTextToSelected();
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
@@ -100,11 +99,14 @@ function onResizeTxt(txtResizeAction) {
 
 function onSwitchTxtLine() {
     updateSelectedLineIndx();
+    updateInputTextToSelected();
+}
+
+function updateInputTextToSelected() {
     var elTxt = document.querySelector('input[name=txt-on-meme]');
     elTxt.value = getTxtOfSelectedLine();
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
-
 }
 
 function onDeleteTxt() {
@@ -206,10 +208,7 @@ function onDownloadCanvas(elDownloadBtn) {
     gMeme.selectedLineIndx = null;
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
-    console.log(elDownloadBtn);
-    setTimeout(() => {
-        downloadCanvas(elDownloadBtn, gElCanvas);
-    }, 100);
+    downloadCanvas(elDownloadBtn, gElCanvas);
 }
 
 

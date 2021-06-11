@@ -146,16 +146,16 @@ function deleteLine(canvasHeight) {
     var lineIndx = gMeme.selectedLineIndx;
     gMeme.lines.splice(lineIndx, 1);
     gMeme.selectedLineIndx = 0;
-    for (let i = 0; i < gMeme.lines.length; i++) {
-        const curLine = gMeme.lines[i];
-        if (i === 0) {
-            curLine.y = 80;
-        } else if (i === 1) {
-            curLine.y = canvasHeight - 40;
-        } else {
-            curLine.y = canvasHeight / 2;
-        }
-    }
+    // for (let i = 0; i < gMeme.lines.length; i++) {
+    //     const curLine = gMeme.lines[i];
+    //     if (i === 0) {
+    //         curLine.y = 80;
+    //     } else if (i === 1) {
+    //         curLine.y = canvasHeight - 40;
+    //     } else {
+    //         curLine.y = canvasHeight / 2;
+    //     }
+    // }
 }
 
 function getGmeme() {
@@ -180,7 +180,7 @@ function updateGmemeTxtWhileWriting(chars) {
 function downloadCanvas(elDownloadBtn, gElCanvas) {
     const data = gElCanvas.toDataURL()
     elDownloadBtn.href = data
-    elDownloadBtn.download = 'puki'
+    elDownloadBtn.download = 'meme'
 }
 
 function resizeCanvas() {
