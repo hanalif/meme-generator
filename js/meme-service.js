@@ -175,3 +175,10 @@ function downloadCanvas(elDownloadBtn, gElCanvas) {
     elDownloadBtn.href = data
     elDownloadBtn.download = 'puki'
 }
+
+function resizeCanvas() {
+    var elContainer = document.querySelector('.canvas-container');
+    // Note: changing the canvas dimension this way clears the canvas
+    gCanvas.width = elContainer.offsetWidth
+    gCanvas.height = elContainer.offsetHeight
+}

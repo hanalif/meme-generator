@@ -3,8 +3,8 @@
 var gElCanvas;
 var gCtx;
 
-const CANVAS_HEIGHT = 450;
-const CANVAS_WIDTH = 450;
+let CANVAS_HEIGHT = 450;
+let CANVAS_WIDTH = 450;
 
 
 
@@ -46,6 +46,7 @@ function renderGalery() {
 function onClickImg(ev) {
     var imgId = +ev.toElement.id;
     firstUpdatOfeGmeme(imgId);
+    addTxt('<Enter Your Text>', CANVAS_HEIGHT);
     var imgUrl = getImgUrl();
     galeryToDisplayNone();
     memeEditorToDisplayBlock();
