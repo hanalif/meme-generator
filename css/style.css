@@ -223,6 +223,7 @@ button {
     .meme-editor-container {
         flex-direction: column;
         height: 52.125rem;
+        height: 100%;
     }
     .imges-container {
         grid-template-columns: repeat(2, 1fr);
