@@ -1,6 +1,7 @@
 'use-strict'
 var gMeme;
-gFilteredImeges = null;
+var gFilteredImeges = null;
+var gMostFrequentSearchWords = new Map();
 
 var gImges = [
     { id: 1, url: './meme-imgs (square)/1.jpg', keywords: ['trump'] },
@@ -197,4 +198,29 @@ function filterSearchResults(searchValue) {
         const indexOfKeyword = img.keywords.findIndex(keyword => keyword.toLowerCase().indexOf(searchValue.toLowerCase()) > -1)
         return indexOfKeyword > -1;
     });
+}
+
+function filterSearchResultByFullWord(searchValue) {
+    let searchWord;
+    var imgesOfsearchWord = gImges.filter(img => {
+        return img.keywords.includes(searchValue);
+    })
+
+    if (imgesOfsearchWord.length > 0) {
+        searchWord = searchValue;
+    }
+    if (searchWord === undefined) return;
+    if (searchWord === '') return;
+
+    if (gMostFrequentSearchWords.has(searchWord)) {
+        var value = gMostFrequentSearchWords.get(searchWord);
+        gMostFrequentSearchWords.set(searchWord, value + 1)
+
+    } else {
+        gMostFrequentSearchWords.set(searchWord, 1);
+    }
+}
+
+function getMostFrequentSearchWordsMpa() {
+    return gMostFrequentSearchWords;
 }

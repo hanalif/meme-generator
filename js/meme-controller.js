@@ -268,5 +268,17 @@ function drawRect(x, y, width, height) {
 function onSearchInGalery(ev, searchValue) {
     ev.stopPropagation();
     filterSearchResults(searchValue);
+    filterSearchResultByFullWord(searchValue);
     renderGalery();
+    renderMostFrequentWordsSearch();
+}
+
+function renderMostFrequentWordsSearch() {
+    var elMostFrequentWordsBox = document.querySelector('.words-wrapper');
+    var strHTMLs = '';
+    var wordsMap = getMostFrequentSearchWordsMpa();
+    wordsMap.forEach((value, key) => {
+        strHTMLs += `<h5 class="frequent-word" style="font-size:${1.25 +value}rem;">${key}</h5>`;
+    })
+    elMostFrequentWordsBox.innerHTML = strHTMLs;
 }

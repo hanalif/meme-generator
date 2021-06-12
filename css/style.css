@@ -27,9 +27,10 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 .866em;
+    margin: 0 0 0;
     font-weight: 400;
     line-height: 1.2;
+    display: inline-block;
 }
 
 h2 {
@@ -96,6 +97,11 @@ button {
     display: flex;
     height: 6.25rem;
     align-items: center;
+    display: flex;
+    gap: 4.125rem;
+    height: 100%;
+    font-family: 'impact';
+    padding: 1rem;
 }
 
 .search-input {
@@ -135,6 +141,14 @@ button {
 .search-galery-icon {
     position: absolute;
     width: 11%;
+    top: 1px;
+}
+
+.words-wrapper {
+    /* border: 1px solid black; */
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 
@@ -242,7 +256,17 @@ button {
         height: 100%;
         overflow: hidden;
     }
+    .search-container {
+        flex-direction: column;
+        gap: 0;
+    }
+    .search-input {
+        margin-bottom: 0.68rem;
+    }
     .imges-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .words-wrapper {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
