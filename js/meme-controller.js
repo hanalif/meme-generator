@@ -71,6 +71,7 @@ function renderCanvas(imgUrl) {
         var selectedFont = line.txtFont;
         gCtx.font = `${txtSize}px ${selectedFont}`;
         let txt = line.txt;
+
         gCtx.fillStyle = `${line.color}`;
         gCtx.fillText(txt, line.x, line.y);
         gCtx.strokeText(txt, line.x, line.y);
