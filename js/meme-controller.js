@@ -33,6 +33,7 @@ function onFontChange(font) {
 }
 
 function renderGalery() {
+
     var imges = getFilterdImages();
     var id = 0;
     var strHTMLs = imges.map(function(img) {
@@ -233,6 +234,8 @@ function onReturnToGalery() {
 
 
 function galeryToDisplayNone() {
+    var elGalleryBtn = document.querySelector('.header-nav-btn');
+    elGalleryBtn.classList.remove('curr-page');
     var elGaleryWrapper = document.querySelector('.galery-wrapper');
     elGaleryWrapper.style.display = 'none';
 }
@@ -243,6 +246,8 @@ function memeEditorToDisplayBlock() {
 }
 
 function galeryToDisplayBlock() {
+    var elGalleryBtn = document.querySelector('.header-nav-btn');
+    elGalleryBtn.classList.add('curr-page');
     var elGaleryWrapper = document.querySelector('.galery-wrapper');
     elGaleryWrapper.style.display = 'block';
 }
