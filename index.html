@@ -38,7 +38,7 @@
             </div>
             <div class="meme-design-container">
                 <div class="btns-container">
-                    <input onkeyup="onWritingTxt(this.value)" class="txt-input" type="text" name="txt-on-meme" placeholder="write some txt">
+                    <input onkeyup="onWritingTxt(this.value)" class="txt-input" type="text" name="txt-on-meme">
                 </div>
                 <div class="btns-container">
                     <button class="action-btn" onclick="onSwitchTxtLine()"><img src="./ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt="switch" srcset=""></button>
@@ -52,9 +52,9 @@
                     <button class="action-btn" onclick="onMoveTxt(this.value)" value='down'>⬇</button>
                 </div>
                 <div class="btns-container">
-                    <button class="action-btn" onclick="onAlignTxt(this.value)" value="right"><img src="./ICONS/align-to-right.png" alt=""></i></button>
-                    <button class="action-btn" onclick="onAlignTxt(this.value)" value="center"><img src="./ICONS/center-text-alignment.png" alt=""></button>
                     <button class="action-btn" onclick="onAlignTxt(this.value)" value="left"><img src="./ICONS/align-to-left.png" alt="" srcset=""></i></button>
+                    <button class="action-btn" onclick="onAlignTxt(this.value)" value="center"><img src="./ICONS/center-text-alignment.png" alt=""></button>
+                    <button class="action-btn" onclick="onAlignTxt(this.value)" value="right"><img src="./ICONS/align-to-right.png" alt=""></i></button>
                     <button class="action-btn" onclick="onClickTxtColorButton()">
                         <img src="./ICONS/paint-board-and-brush.png" alt="paintboard" srcset="">
                         <input type="color" class="color-input" onclick="onClickColorInput(event)" oninput="onPickTxtColor(this.value)">

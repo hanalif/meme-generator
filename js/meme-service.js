@@ -91,8 +91,8 @@ function getTxtOfSelectedLine() {
 }
 
 
-function addTxt(txt, canvasHeight) {
-    var line = createNewLine(txt, canvasHeight);
+function addTxt(txt, canvasHeight, canvasWidth) {
+    var line = createNewLine(txt, canvasHeight, canvasWidth);
     gMeme.lines.push(line);
     gMeme.selectedLineIndx = gMeme.lines.length - 1;
 }
@@ -101,7 +101,7 @@ function getAvailableFonts() {
     return gMemeFonts;
 }
 
-function createNewLine(txt, canvasHeight) {
+function createNewLine(txt, canvasHeight, canvasWidth) {
     let y;
     if (gMeme.lines.length === 0) {
         y = 80;
@@ -110,7 +110,6 @@ function createNewLine(txt, canvasHeight) {
     } else {
         y = canvasHeight / 2;
     }
-
     return {
         txt: txt,
         size: 50,
@@ -118,7 +117,7 @@ function createNewLine(txt, canvasHeight) {
         align: 'center',
         color: 'white',
         strokeColor: 'black',
-        x: 225,
+        x: (canvasWidth / 2) - (350.9765625 / 2),
         y: y,
     }
 }
