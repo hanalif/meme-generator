@@ -10,7 +10,7 @@
     <title>Meme-Generator</title>
 </head>
 
-<body onload="init()" onkeydown="moveTxt(event)">
+<body onload="init()" onkeyup="moveTxt(event)">
     <header class="main-header">
         <nav class="header-nav main-layout">
             <div class="logo">Logo</div>
@@ -20,9 +20,12 @@
         </nav>
     </header>
     <div class="galery-wrapper">
-        <!-- <div class="search-container main-layout">
-            <input class="search-input" type="text" placeholder="search"><i class="fas fa-search"></i>
-        </div> -->
+        <div class="search-container main-layout">
+            <div class="search-galery-wrapper">
+                <input class="search-input" onkeyup="onSearchInGalery(event, this.value)" type="text" placeholder="search">
+                <img class="search-galery-icon" src="./ICONS/search-icon.png" alt="" srcset="">
+            </div>
+        </div>
         <div class="galery-container " onclick="onClickImg(event)">
             <div class="imges-container main-layout">
 

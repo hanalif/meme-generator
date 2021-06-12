@@ -1,26 +1,27 @@
 'use-strict'
 var gMeme;
+gFilteredImeges = null;
 
 var gImges = [
-    { id: 1, url: './meme-imgs (square)/1.jpg', Keywords: ['trump'] },
-    { id: 2, url: './meme-imgs (square)/2.jpg', Keywords: ['dogs'] },
-    { id: 3, url: './meme-imgs (square)/3.jpg', Keywords: ['dog', 'baby'] },
-    { id: 4, url: './meme-imgs (square)/4.jpg', Keywords: ['cat'] },
-    { id: 5, url: './meme-imgs (square)/5.jpg', Keywords: ['kid', 'baby'] },
-    { id: 6, url: './meme-imgs (square)/6.jpg', Keywords: [''] },
-    { id: 7, url: './meme-imgs (square)/7.jpg', Keywords: [''] },
-    { id: 8, url: './meme-imgs (square)/8.jpg', Keywords: [''] },
-    { id: 9, url: './meme-imgs (square)/9.jpg', Keywords: [''] },
-    { id: 10, url: './meme-imgs (square)/10.jpg', Keywords: [''] },
-    { id: 11, url: './meme-imgs (square)/11.jpg', Keywords: [''] },
-    { id: 12, url: './meme-imgs (square)/12.jpg', Keywords: [''] },
-    { id: 13, url: './meme-imgs (square)/13.jpg', Keywords: [''] },
-    { id: 14, url: './meme-imgs (square)/14.jpg', Keywords: [''] },
-    { id: 14, url: './meme-imgs (square)/15.jpg', Keywords: [''] },
-    { id: 15, url: './meme-imgs (square)/15.jpg', Keywords: [''] },
-    { id: 16, url: './meme-imgs (square)/16.jpg', Keywords: [''] },
-    { id: 17, url: './meme-imgs (square)/17.jpg', Keywords: [''] },
-    { id: 18, url: './meme-imgs (square)/18.jpg', Keywords: [''] },
+    { id: 1, url: './meme-imgs (square)/1.jpg', keywords: ['trump'] },
+    { id: 2, url: './meme-imgs (square)/2.jpg', keywords: ['dogs'] },
+    { id: 3, url: './meme-imgs (square)/3.jpg', keywords: ['dog', 'baby'] },
+    { id: 4, url: './meme-imgs (square)/4.jpg', keywords: ['cat'] },
+    { id: 5, url: './meme-imgs (square)/5.jpg', keywords: ['kid', 'baby'] },
+    { id: 6, url: './meme-imgs (square)/6.jpg', keywords: ['smile'] },
+    { id: 7, url: './meme-imgs (square)/7.jpg', keywords: [''] },
+    { id: 8, url: './meme-imgs (square)/8.jpg', keywords: ['smile'] },
+    { id: 9, url: './meme-imgs (square)/9.jpg', keywords: ['smile', 'kid'] },
+    { id: 10, url: './meme-imgs (square)/10.jpg', keywords: ['smile'] },
+    { id: 11, url: './meme-imgs (square)/11.jpg', keywords: ['kiss'] },
+    { id: 12, url: './meme-imgs (square)/12.jpg', keywords: [''] },
+    { id: 13, url: './meme-imgs (square)/13.jpg', keywords: ['smile'] },
+    { id: 14, url: './meme-imgs (square)/14.jpg', keywords: [''] },
+    { id: 14, url: './meme-imgs (square)/15.jpg', keywords: [''] },
+    { id: 15, url: './meme-imgs (square)/15.jpg', keywords: [''] },
+    { id: 16, url: './meme-imgs (square)/16.jpg', keywords: [''] },
+    { id: 17, url: './meme-imgs (square)/17.jpg', keywords: [''] },
+    { id: 18, url: './meme-imgs (square)/18.jpg', keywords: [''] },
 ];
 
 gMemeFonts = [
@@ -47,6 +48,10 @@ function creategMeme(imgId) {
 
 function getImges() {
     return gImges;
+}
+
+function getFilterdImages() {
+    return gFilteredImeges != null ? gFilteredImeges : gImges;
 }
 
 function firstUpdatOfeGmeme(imgId) {
@@ -183,9 +188,13 @@ function downloadCanvas(elDownloadBtn, gElCanvas) {
     elDownloadBtn.download = 'meme'
 }
 
-function resizeCanvas() {
-    var elContainer = document.querySelector('.canvas-container');
-    // Note: changing the canvas dimension this way clears the canvas
-    gCanvas.width = elContainer.offsetWidth
-    gCanvas.height = elContainer.offsetHeight
+function filterSearchResults(searchValue) {
+    if (searchValue === '') {
+        gFilteredImeges = gImges;
+        return;
+    }
+    gFilteredImeges = gImges.filter(img => {
+        const indexOfKeyword = img.keywords.findIndex(keyword => keyword.toLowerCase().indexOf(searchValue.toLowerCase()) > -1)
+        return indexOfKeyword > -1;
+    });
 }

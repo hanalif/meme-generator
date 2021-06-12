@@ -38,7 +38,7 @@ function onFontChange(font) {
 }
 
 function renderGalery() {
-    var imges = getImges();
+    var imges = getFilterdImages();
     var id = 0;
     var strHTMLs = imges.map(function(img) {
         return `<img id="${id + 1}" class="galery-img" src="${img.url}" alt="img + ${id++}">`
@@ -263,4 +263,10 @@ function drawRect(x, y, width, height) {
     gCtx.lineWidth = 3
     gCtx.strokeStyle = 'yellow'
     gCtx.stroke()
+}
+
+function onSearchInGalery(ev, searchValue) {
+    ev.stopPropagation();
+    filterSearchResults(searchValue);
+    renderGalery();
 }

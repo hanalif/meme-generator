@@ -127,6 +127,16 @@ button {
     height: 100%;
 }
 
+.search-galery-wrapper {
+    position: relative;
+    width: 12.5rem;
+}
+
+.search-galery-icon {
+    position: absolute;
+    width: 11%;
+}
+
 
 /* editor */
 
