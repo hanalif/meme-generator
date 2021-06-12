@@ -104,13 +104,27 @@ function onResizeTxt(txtResizeAction) {
 function onSwitchTxtLine() {
     updateSelectedLineIndx();
     updateInputTextToSelected();
+    updateInputTextColorToSelected();
+    updateInputStrokeColorToSelected();
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
 }
 
 function updateInputTextToSelected() {
     var elTxt = document.querySelector('input[name=txt-on-meme]');
     elTxt.value = getTxtOfSelectedLine();
-    var imgUrl = getImgUrl();
-    renderCanvas(imgUrl);
+}
+
+function updateInputTextColorToSelected() {
+    var elTextColorInput = document.querySelector('.color-input');
+    const selectedLine = getSelectedLine();
+    elTextColorInput.value = selectedLine.color;
+}
+
+function updateInputStrokeColorToSelected() {
+    var elTextColorInput = document.querySelector('.stroke-color-input');
+    const selectedLine = getSelectedLine();
+    elTextColorInput.value = selectedLine.strokeColor;
 }
 
 function onDeleteTxt() {
