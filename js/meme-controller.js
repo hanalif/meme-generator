@@ -174,9 +174,9 @@ function onAlignTxt(txtAlignAction) {
     selectedMeme.align = txtAlignAction;
     var txtWidth = gCtx.measureText(selectedMeme.txt).width;
     if (txtAlignAction === 'left') {
-        selectedMeme.x = 0;
+        selectedMeme.x = 10;
     } else if (txtAlignAction === 'right') {
-        selectedMeme.x = CANVAS_WIDTH - txtWidth;
+        selectedMeme.x = CANVAS_WIDTH - (txtWidth + 10);
     } else {
         selectedMeme.x = (CANVAS_WIDTH / 2) - (txtWidth / 2);
     }
@@ -254,7 +254,7 @@ function memeEditorToDisplayNone() {
 function drawRect(x, y, width, height) {
     gCtx.beginPath()
     gCtx.rect(x, y, width, height)
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
+    gCtx.lineWidth = 3
+    gCtx.strokeStyle = 'yellow'
     gCtx.stroke()
 }
