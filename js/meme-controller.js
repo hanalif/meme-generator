@@ -140,6 +140,7 @@ function onDeleteTxt() {
 }
 
 function moveTxt(ev) {
+    if (ev.key === 'Enter') return;
     var imgUrl = getImgUrl();
     var meme = getGmeme();
     if (ev.key === 'ArrowUp') {
@@ -266,6 +267,8 @@ function drawRect(x, y, width, height) {
 }
 
 function onSearchInGalery(ev, searchValue) {
+    console.log(ev);
+    if (ev.key === 'Enter') return;
     ev.stopPropagation();
     filterSearchResults(searchValue);
     filterSearchResultByFullWord(searchValue);
