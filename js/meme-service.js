@@ -111,6 +111,7 @@ function createNewLine(txt, canvasHeight, canvasWidth) {
         y = canvasHeight / 2;
     }
     return {
+        txtFont: 'impact',
         txt: txt,
         size: 50,
         selectedFontIndex: null,

@@ -8,6 +8,10 @@ let CANVAS_WIDTH = 450;
 
 
 
+
+
+
+
 function init() {
     renderGalery();
     renderFontsList();
@@ -28,6 +32,7 @@ function onFontChange(font) {
     const fonts = getAvailableFonts();
     const fontIndex = fonts.indexOf(font);
     line.selectedFontIndex = fontIndex;
+    line.txtFont = font;
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
@@ -68,7 +73,8 @@ function renderCanvas(imgUrl) {
         let txtSize = line.size;
         gCtx.lineWidth = 2
         gCtx.strokeStyle = `${line.strokeColor}`;
-        var selectedFont = getFontByIndex(line.selectedFontIndex);
+        // var selectedFont = getFontByIndex(line.selectedFontIndex);
+        var selectedFont = line.txtFont;
         gCtx.font = `${txtSize}px ${selectedFont}`;
         let txt = line.txt;
         // gCtx.textAlign = `center`;
