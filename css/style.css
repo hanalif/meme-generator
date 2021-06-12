@@ -168,8 +168,8 @@ button {
 }
 
 .canvas-container {
-    width: 28.125rem;
     height: inherit;
+    display: flex;
 }
 
 .action-btn {

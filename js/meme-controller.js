@@ -3,13 +3,8 @@
 var gElCanvas;
 var gCtx;
 
-let CANVAS_HEIGHT = 450;
-let CANVAS_WIDTH = 450;
-
-
-
-
-
+let CANVAS_HEIGHT = 400;
+let CANVAS_WIDTH = 400;
 
 
 function init() {
@@ -73,11 +68,9 @@ function renderCanvas(imgUrl) {
         let txtSize = line.size;
         gCtx.lineWidth = 2
         gCtx.strokeStyle = `${line.strokeColor}`;
-        // var selectedFont = getFontByIndex(line.selectedFontIndex);
         var selectedFont = line.txtFont;
         gCtx.font = `${txtSize}px ${selectedFont}`;
         let txt = line.txt;
-        // gCtx.textAlign = `center`;
         gCtx.fillStyle = `${line.color}`;
         gCtx.fillText(txt, line.x, line.y);
         gCtx.strokeText(txt, line.x, line.y);

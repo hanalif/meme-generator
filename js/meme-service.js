@@ -119,7 +119,7 @@ function createNewLine(txt, canvasHeight, canvasWidth) {
     return {
         txtFont: 'impact',
         txt: txt,
-        size: 50,
+        size: 40,
         selectedFontIndex: null,
         align: 'center',
         color: 'white',
