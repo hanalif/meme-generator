@@ -203,7 +203,7 @@ function filterSearchResults(searchValue) {
 function filterSearchResultByFullWord(searchValue) {
     let searchWord;
     var imgesOfsearchWord = gImges.filter(img => {
-        return img.keywords.includes(searchValue);
+        return img.keywords.includes(searchValue.toLowerCase());
     })
 
     if (imgesOfsearchWord.length > 0) {
