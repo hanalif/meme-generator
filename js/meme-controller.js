@@ -51,10 +51,11 @@ function renderGalery() {
 function onClickImg(ev) {
     var imgId = +ev.toElement.id;
     firstUpdatOfeGmeme(imgId);
-    addTxt('<Enter Your Text>', gCanvasHeight, gCanvasWidth);
     var imgUrl = getImgUrl();
     galeryToDisplayNone();
     memeEditorToDisplayBlock();
+    updateCanvasWidth();
+    addTxt('<Enter Your Text>', gCanvasHeight, gCanvasWidth);
     renderCanvas(imgUrl);
 };
 
@@ -312,12 +313,16 @@ function resizeCanvas() {
         gCtx = gElCanvas.getContext('2d');
     }
 
+    updateCanvasWidth();
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
+}
+
+function updateCanvasWidth() {
     if (window.innerWidth >= 722) {
         gCanvasWidth = 550;
     } else {
         gCanvasWidth = 400;
     }
     gCanvasHeight = gCanvasWidth;
-    var imgUrl = getImgUrl();
-    renderCanvas(imgUrl);
 }
