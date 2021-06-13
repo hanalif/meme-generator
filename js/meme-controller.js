@@ -311,8 +311,6 @@ function resizeCanvas() {
         gElCanvas = document.querySelector('.img-canvas');
         gCtx = gElCanvas.getContext('2d');
     }
-    var elContainer = document.querySelector('.canvas-container');
-    // Note: changing the canvas dimension this way clears the canvas
 
     if (window.innerWidth >= 722) {
         gCanvasWidth = 550;
