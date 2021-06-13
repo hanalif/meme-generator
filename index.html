@@ -13,7 +13,7 @@
 <body onload="init()" onkeyup="moveTxt(event)">
     <header class="main-header">
         <nav class="header-nav main-layout">
-            <div class="logo">Hana</div>
+            <div class="logo"></div>
             <div class="side-nav">
                 <button onclick="onReturnToGalery()" class="header-nav-btn curr-page">Gallery</button>
             </div>
@@ -30,7 +30,6 @@
         </div>
         <div class="galery-container " onclick="onClickImg(event)">
             <div class="imges-container main-layout">
-
             </div>
         </div>
     </div>
@@ -39,7 +38,7 @@
     <div class="main-meme-editor-container">
         <div class="meme-editor-container main-layout">
             <div class="canvas-container">
-                <canvas width="400" height="400" class="img-canvas"></canvas>
+                <canvas onmousedown="onSelectLineToMove(event)" onmousemove="onLineMove(event)" onmouseup="onFinishLineDrag()" width="400" height="400" class="img-canvas"></canvas>
             </div>
             <div class="meme-design-container">
                 <div class="btns-container">

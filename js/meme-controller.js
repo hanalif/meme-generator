@@ -62,7 +62,6 @@ function renderCanvas(imgUrl) {
     }
     var imgObj = new Image();
     imgObj.src = imgUrl;
-
     gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     for (let i = 0; i < gMeme.lines.length; i++) {
         let line = gMeme.lines[i];
@@ -261,7 +260,7 @@ function drawRect(x, y, width, height) {
     gCtx.beginPath()
     gCtx.rect(x, y, width, height)
     gCtx.lineWidth = 3
-    gCtx.strokeStyle = 'yellow'
+    gCtx.strokeStyle = '#dfeeea'
     gCtx.stroke()
 }
 
@@ -283,4 +282,19 @@ function renderMostFrequentWordsSearch() {
         strHTMLs += `<h5 class="frequent-word" style="font-size:${1.25 +value}rem;">${key}</h5>`;
     })
     elMostFrequentWordsBox.innerHTML = strHTMLs;
+}
+
+function onSelectLineToMove(ev) {
+    selectLineToMove(ev);
+
+}
+
+function onFinishLineDrag() {
+    finishLineDrag();
+}
+
+function onLineMove(ev) {
+    lineMove(ev);
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
 }

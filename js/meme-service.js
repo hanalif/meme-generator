@@ -2,6 +2,7 @@
 var gMeme;
 var gFilteredImeges = null;
 var gMostFrequentSearchWords = new Map();
+var gIsLineDragged = null;
 
 var gImges = [
     { id: 1, url: './meme-imgs (square)/1.jpg', keywords: ['trump'] },
@@ -223,4 +224,24 @@ function filterSearchResultByFullWord(searchValue) {
 
 function getMostFrequentSearchWordsMpa() {
     return gMostFrequentSearchWords;
+}
+
+function selectLineToMove(ev) {
+    var lineIndx = gMeme.lines.findIndex(line => {
+        let txtWidth = gCtx.measureText(line.txt);
+        return ev.offsetY > line.y - line.size &&
+            ev.offsetY < line.y + line.size
+    })
+
+    gIsLineDragged = lineIndx;
+}
+
+function finishLineDrag() {
+    gIsLineDragged = null;
+}
+
+function lineMove(ev) {
+    if (gIsLineDragged === null) return;
+    gMeme.lines[gIsLineDragged].x += ev.movementX
+    gMeme.lines[gIsLineDragged].y += ev.movementY
 }
