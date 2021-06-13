@@ -3,13 +3,17 @@
 var gElCanvas;
 var gCtx;
 
-let CANVAS_HEIGHT = 400;
-let CANVAS_WIDTH = 400;
+let gCanvasHeight;
+let gCanvasWidth;
+
+
 
 
 function init() {
+    window.addEventListener('resize', resizeCanvas);
     renderGalery();
     renderFontsList();
+
 }
 
 function renderFontsList() {
@@ -47,7 +51,7 @@ function renderGalery() {
 function onClickImg(ev) {
     var imgId = +ev.toElement.id;
     firstUpdatOfeGmeme(imgId);
-    addTxt('<Enter Your Text>', CANVAS_HEIGHT, CANVAS_WIDTH);
+    addTxt('<Enter Your Text>', gCanvasHeight, gCanvasWidth);
     var imgUrl = getImgUrl();
     galeryToDisplayNone();
     memeEditorToDisplayBlock();
@@ -60,9 +64,11 @@ function renderCanvas(imgUrl) {
         gElCanvas = document.querySelector('.img-canvas');
         gCtx = gElCanvas.getContext('2d');
     }
+    gElCanvas.width = gCanvasWidth;
+    gElCanvas.height = gCanvasHeight;
     var imgObj = new Image();
     imgObj.src = imgUrl;
-    gCtx.drawImage(imgObj, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    gCtx.drawImage(imgObj, 0, 0, gCanvasWidth, gCanvasHeight);
     for (let i = 0; i < gMeme.lines.length; i++) {
         let line = gMeme.lines[i];
         let txtSize = line.size;
@@ -88,7 +94,7 @@ function renderCanvas(imgUrl) {
 
 
 function onAddTxt() {
-    addTxt('<Enter Your Text>', CANVAS_HEIGHT, CANVAS_WIDTH);
+    addTxt('<Enter Your Text>', gCanvasHeight, gCanvasWidth);
     updateInputTextToSelected();
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
@@ -127,7 +133,7 @@ function updateInputStrokeColorToSelected() {
 }
 
 function onDeleteTxt() {
-    deleteLine(CANVAS_HEIGHT);
+    deleteLine(gCanvasHeight);
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
@@ -176,9 +182,9 @@ function onAlignTxt(txtAlignAction) {
     if (txtAlignAction === 'left') {
         selectedMeme.x = 10;
     } else if (txtAlignAction === 'right') {
-        selectedMeme.x = CANVAS_WIDTH - (txtWidth + 10);
+        selectedMeme.x = gCanvasWidth - (txtWidth + 10);
     } else {
-        selectedMeme.x = (CANVAS_WIDTH / 2) - (txtWidth / 2);
+        selectedMeme.x = (gCanvasWidth / 2) - (txtWidth / 2);
     }
     renderCanvas(imgUrl);
 }
@@ -211,7 +217,7 @@ function onClickTxtColorButton(ev) {
 
 function onWritingTxt(chars) {
     if (gMeme.selectedLineIndx != null) {
-        updateGmemeTxtWhileWriting(chars, CANVAS_HEIGHT);
+        updateGmemeTxtWhileWriting(chars, gCanvasHeight);
         var imgUrl = getImgUrl();
         renderCanvas(imgUrl);
     }
@@ -295,6 +301,25 @@ function onFinishLineDrag() {
 
 function onLineMove(ev) {
     lineMove(ev);
+    var imgUrl = getImgUrl();
+    renderCanvas(imgUrl);
+}
+
+
+function resizeCanvas() {
+    if (!gElCanvas) {
+        gElCanvas = document.querySelector('.img-canvas');
+        gCtx = gElCanvas.getContext('2d');
+    }
+    var elContainer = document.querySelector('.canvas-container');
+    // Note: changing the canvas dimension this way clears the canvas
+
+    if (window.innerWidth >= 722) {
+        gCanvasWidth = 550;
+    } else {
+        gCanvasWidth = 400;
+    }
+    gCanvasHeight = gCanvasWidth;
     var imgUrl = getImgUrl();
     renderCanvas(imgUrl);
 }
