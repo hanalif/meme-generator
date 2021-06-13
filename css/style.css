@@ -193,6 +193,7 @@ button {
     align-items: center;
     height: 100%;
     gap: 5.3125rem;
+    padding: 1.75rem;
 }
 
 .canvas-container {
@@ -254,7 +255,7 @@ button {
 .txt-input {
     border: none;
     height: 1.75rem;
-    border-radius: 0.312rem;
+    border-radius: 0.3rem;
     padding-left: 1rem;
 }
 
@@ -264,6 +265,7 @@ button {
 .footer {
     background-color: #ff7f00;
     height: 4.125rem;
+    height: 12.93rem;
 }
 
 
@@ -292,6 +294,7 @@ button {
         height: 100%;
         overflow: hidden;
         gap: 15px;
+        padding: 0;
     }
     .txt-input {
         width: 24rem;
@@ -312,5 +315,11 @@ button {
     }
     .words-wrapper {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .btns-container {
+        gap: 0.9375rem
+    }
+    .fonts-input {
+        width: 17.25rem;
     }
 }
