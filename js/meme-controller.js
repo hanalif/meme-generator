@@ -71,10 +71,6 @@ function renderCanvas(imgUrl) {
         var selectedFont = line.txtFont;
         gCtx.font = `${txtSize}px ${selectedFont}`;
         let txt = line.txt;
-
-        gCtx.fillStyle = `${line.color}`;
-        gCtx.fillText(txt, line.x, line.y);
-        gCtx.strokeText(txt, line.x, line.y);
         if (gMeme.selectedLineIndx === i) {
             const text = line.txt;
             let width = gCtx.measureText(text).width + 3;
@@ -84,6 +80,9 @@ function renderCanvas(imgUrl) {
             const align = line.align;
             drawRect(x, y, width, height);
         }
+        gCtx.fillStyle = `${line.color}`;
+        gCtx.fillText(txt, line.x, line.y);
+        gCtx.strokeText(txt, line.x, line.y);
     }
 }
 
@@ -258,10 +257,12 @@ function memeEditorToDisplayNone() {
 
 function drawRect(x, y, width, height) {
     gCtx.beginPath()
-    gCtx.rect(x, y, width, height)
     gCtx.lineWidth = 3
-    gCtx.strokeStyle = '#dfeeea'
+    gCtx.fillStyle = 'rgba(180, 180, 180, 0.609)';
+    // gCtx.strokeStyle = '#dfeeea'
+    gCtx.fillRect(x - 5, y - 5, width + 5, height + 5);
     gCtx.stroke()
+    gCtx.rect(x - 5, y - 5, width + 5, height + 5);
 }
 
 function onSearchInGalery(ev, searchValue) {
@@ -286,7 +287,6 @@ function renderMostFrequentWordsSearch() {
 
 function onSelectLineToMove(ev) {
     selectLineToMove(ev);
-
 }
 
 function onFinishLineDrag() {

@@ -228,12 +228,11 @@ function getMostFrequentSearchWordsMpa() {
 
 function selectLineToMove(ev) {
     var lineIndx = gMeme.lines.findIndex(line => {
-        let txtWidth = gCtx.measureText(line.txt);
         return ev.offsetY > line.y - line.size &&
             ev.offsetY < line.y + line.size
     })
-
     gIsLineDragged = lineIndx;
+    gMeme.selectedLineIndx = lineIndx;
 }
 
 function finishLineDrag() {
