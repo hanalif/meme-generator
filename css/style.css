@@ -192,6 +192,7 @@ button {
     justify-content: center;
     align-items: center;
     height: 100%;
+    gap: 5.3125rem;
 }
 
 .canvas-container {
@@ -290,10 +291,18 @@ button {
         height: 52.125rem;
         height: 100%;
         overflow: hidden;
+        gap: 15px;
+    }
+    .txt-input {
+        width: 24rem;
+        height: 3.125rem;
     }
     .search-container {
         flex-direction: column;
         gap: 0;
+    }
+    .canvas-container {
+        margin-top: 0.625rem;
     }
     .search-input {
         margin-bottom: 0.68rem;
