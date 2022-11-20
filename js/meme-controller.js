@@ -49,7 +49,7 @@ function renderGalery() {
 
 
 function onClickImg(ev) {
-    var imgId = +ev.toElement.id;
+    var imgId = +ev.target.id;
     firstUpdatOfeGmeme(imgId);
     var imgUrl = getImgUrl();
     galeryToDisplayNone();
