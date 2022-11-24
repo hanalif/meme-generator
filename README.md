@@ -6,6 +6,5 @@ The application gives you an opportunity to create Memes and to download them.
 https://hanalif.github.io/meme-generator/
 
 ## Contact Me
-LinkedIn: https://www.linkedin.com/in/hana-lipschutz
-Email address:   hanalif619@gmail.com 	
-GitHub: https://github.com/hanalif
+[![Gmail Badge](https://img.shields.io/badge/-hanalif619-c14438?style=social&logo=Gmail&logoColor=red&link=mailto:hanalif619@gmail.com)](mailto:hanalif619@gmail.com)
+[![LinkedIn Badge](https://img.shields.io/badge/-LinkedIn-blue?style=social&logo=Linkedin&logoColor=blue&link=https://www.linkedin.com/in/hana-lipschutz/)](https://www.linkedin.com/in/hana-lipschutz/)
